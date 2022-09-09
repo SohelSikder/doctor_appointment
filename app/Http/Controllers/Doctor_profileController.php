@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Booking;
-use App\Models\Add_doctor;
+
 use App\Models\Specialist;
 use Illuminate\Support\Carbon;
 
@@ -26,7 +26,7 @@ class Doctor_profileController extends Controller
       }
 
       Booking::insert([
-        'doctors_id'=>$request->doctors_id,
+        'doctors_id'=> $request->doctors_id,
         'name'=> $request -> name,
         'phone'=> $request -> phone_number,
         'email'=> $request -> email,
@@ -50,33 +50,36 @@ class Doctor_profileController extends Controller
       return view ('dashboard/dashboard view/add-doctor',compact('specialist'));
     }
     public function added_doctor(Request $request){
-       $doctor = new add_doctor();
+       $doctor = new Doctor();
       if ($request->hasFile('doc_image')){
         $file = $request ->File('doc_image');
         $filename = time().'.'.$file-> getClientOriginalExtension();
-        // $path = 'public/backend/img/doctorImage';
+        
         $file-> move(public_path('backend/img/doctorImage'), $filename);
-        // $namet= 'backend/img/doctorImage'.$filename;
+        $img= 'backend/img/doctorImage/'.$filename;
         // $file -> move($path,$filename);
       }
       
       $doctor->name = $request['name'];
       $doctor->phone = $request['phone_number'];
       $doctor->email = $request['email'];
-      $doctor->specialist = $request['specialist'];
+      $doctor->specialist_id = $request['specialist_id'];
       $doctor->address = $request['address'];
       $doctor->education = $request['education'];
       $doctor->date_of_birth = $request['date_of_birth'];
+      
+      $doctor->price = $request['visit'];
+      $doctor->type= 2;
       // $doctor->doc_imag = $request['filename'];
-      $doctor['doc_image']= $filename;
+      $doctor['doc_image']= $img;
       $doctor->save();
       return redirect()->back();
       
 
     }
     public function all_doctor(){
-      $AllDoctor = Add_doctor::all();
-      return view('dashboard/dashboard view/allDoctor',compact('AllDoctor'));
+      $allDoctor = Doctor::all();
+      return view('dashboard/dashboard view/allDoctor',compact('allDoctor'));
     }
     public function bookingList(){
       $booking_list = Booking:: all();

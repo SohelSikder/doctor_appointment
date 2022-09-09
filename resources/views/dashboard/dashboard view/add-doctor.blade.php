@@ -130,7 +130,7 @@
                                         
                                        </div> -->
 
-                                       <select class="form-select form-select-sm form-control sf-form-control" aria-label=".form-select-sm example">
+                                       <select class="form-select form-select-sm form-control sf-form-control" name="specialist_id" aria-label=".form-select-sm example">
                                           <option selected>Select Specialist</option>
                                           @foreach($specialist as $data)
                     
@@ -150,6 +150,12 @@
                                        <div class="aon-inputicon-box mt-3 mb-3">
                                       
                                            <input class="form-control sf-form-control" name="date_of_birth" type="date" placeholder="Date of Birth">
+                                           <i class="aon-input-icon fa fa-eye"></i>
+                                       </div>
+                                       <label for="" >Consultant fee  </label>
+                                       <div class="aon-inputicon-box mt-3 mb-3">
+                                      
+                                           <input class="form-control sf-form-control" name="visit" type="text" placeholder="Enter Consultant Fee ">
                                            <i class="aon-input-icon fa fa-eye"></i>
                                        </div>
                                    </div>

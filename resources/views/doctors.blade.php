@@ -13,7 +13,7 @@
 <section class=" bg-light-gray">
                 <div class="container">
                     <!--search-->
-                    <div class="aon-search1-bar-wrap">
+                    <!-- <div class="aon-search1-bar-wrap">
               <div class="container">
                  <div class="aon-search1-area">
                      <div class="aon-search1-row">
@@ -23,7 +23,7 @@
                              <li><a href="#labs-tab" class="nav-link" data-bs-toggle="pill"><i class="fa fa-thermometer-0"></i> Labs</a></li>
                          </ul>
                          
-                         <!-- Tab panes -->
+                         
                         <div class="tab-content">
                           <div class="tab-pane container active" id="hospital-tab">
                                 <form class="aon-search1-form">
@@ -227,7 +227,7 @@
                     </div>
                 </div>
               </div>
-            </div>
+            </div> -->
     
                     <!--Title Section Start-->
                     <div class="section-head center">
@@ -244,7 +244,7 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="aon-med-team">
                                         <div class="aon-med-team-pic">
-                                            <a href="profile1.html"><img src="{{asset('/fontend/images/team-2/pic1.jpg')}}" alt="#"></a>
+                                            <a href="profile1.html"><img src="{{asset($data->doc_image)}}" alt="#"></a>
                                         </div>
                                         
                                         <div class="aon-med-team-info">
