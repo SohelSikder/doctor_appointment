@@ -80,7 +80,7 @@
     </div>
     
     <div class="row">
-    @foreach($AllDoctor as $data)
+    @foreach($allDoctor as $data)
   
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
        
@@ -97,7 +97,8 @@
                 </div>
                 <div class="aon-team-pic"><img src="{{ asset('backend/img/doctorImage/' . $data->doc_image) }}" /></div>
                 <h5 class="aon-team-name">{{$data->name}}</h5>
-                <div class="aon-team-postion">{{$data->specialist}}</div> 
+                <p class="aon-team-name">{{$data->specialist->name}}</p>
+                <!-- <div class="aon-team-postion">{{$data->specialist}}</div>  -->
              
             </div>
             

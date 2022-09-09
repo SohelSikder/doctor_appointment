@@ -11,18 +11,22 @@
             <div class="card-body">
                 <table class="table">
                     <thead>
+                    
                     <tr>
                         <th>SL</th>
                         <th>Specialist Name</th>
                         <th>Image</th>
                         <th>Action</th>
                     </tr>
+                    @php($i=1)
+                    @foreach($specialist as $data )
                     <tr>
-                        <td>1</td>
-                        <td> Name</td>
-                        <td>Image</td>
+                        <td>{{$i++}}</td>
+                        <td> {{$data->name}}</td>
+                        <td><img style="height:50px;width:50px;" src="{{asset($data->image)}}" alt=""></td>
                         <td>Action</td>
                     </tr>
+                    @endforeach
                     
 
                     </thead>

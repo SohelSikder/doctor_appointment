@@ -11,11 +11,11 @@
                             <div class="sf-appoint-doc-wrap">
 
                                 <div class="sf-appoint-doc-info">
-                                    <img src="{{asset('fontend/images/team/pic1.jpg')}}" alt="">
+                                    <img src="{{asset($data->doc_image)}}" alt="">
                                     
                                     <h4>{{$data->name}}</h4>
-                                    <p>Clinic</p>
-                                    <h4>Doe Clinic</h4>
+                                    <p>{{$data->specialist->name}}</p>
+                                    <!-- <h4>Doe Clinic</h4> -->
                                     <ul class="sf-appint-control">
                                         <li>
                                             <a href="javascript:;">

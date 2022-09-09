@@ -31,11 +31,12 @@ class HomeController extends Controller
     public function specialistDoctor($id)
     {
         // dd($id);
-        $specialist = Specialist :: find($id);
-        $doctor = Doctor::where('specialist_id',$id)->grt();
+        $specialist = Specialist::find($id);
+        // dd($specialist);
+        $doctor = Doctor::where('specialist_id',$id)->get();
         // dd($specialist);
         // dd($specialist->doctor());
-        // $doctor_list = $specialist->doctors()->get();
+        $doctor_list = $specialist->doctors()->get();
         // return($doctor_list); 
         return view('specialist',compact('specialist','doctor_list'));
     }
@@ -60,7 +61,8 @@ class HomeController extends Controller
     }
 
     public function specialist(){
-        return view ('dashboard/dashboard view/add-specialist');
+        $specialist = Specialist::get();
+        return view ('dashboard/dashboard view/add-specialist',compact('specialist'));
     }
     public function storeSpecialist(Request $request){
         // dd($request->image);
@@ -70,11 +72,14 @@ class HomeController extends Controller
         // }
         $img= $request->file('image');
         $name_gen = hexdec(uniqid()). '.' .$img->getClientOriginalExtension();
-        Image::make($img)->resize(300,200)->save('img/category/'.$name_gen);
-        $last_img = 'img/category/'.$name_gen;
+        Image::make($img)->resize(300,200)->save('backend/img/category/'.$name_gen);
+        $last_img = 'backend/img/category/'.$name_gen;
+        // $path= 'img/category/';
+        // $img -> move($path ,$last_img); 
         $specialist->name = $request['name'];
-        $specialist->img = $last_img ?? Null;
+        $specialist->image = $last_img ?? Null;
         $specialist->save();
+        return redirect()->back();
     }
 
 
