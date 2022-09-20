@@ -86,10 +86,16 @@
    
    <div class="panel-group">
    <div class="panel panel-primary">
-     <form action="{{route('AddedDoctor')}}" class="form-horizontal" id="multistep_form" method="POST" enctype="multipart/form-data">
+     <form action="{{ url('updateDoctor/'.$editDoctor->id) }}" class="form-horizontal" id="multistep_form" method="POST" enctype="multipart/form-data">
          @csrf
+
+         @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif 
          <!-- Form One-->
-           <fieldset id="account">
+         <fieldset id="account">
              <div class="panel-body">
                  <!-- Search Bar Home START -->
                    <div class="aon-booking-wrap d-flex align-items-center justify-content-center">
@@ -104,22 +110,28 @@
                                </div>
  
                                <div class="col-md-12 mt-3">
-                                   <h2 class="aon-form-title" style=text-align:center;>Add A New Doctor</h2>
+                                   <h2 class="aon-form-title" style=text-align:center;>Update Your Data</h2>
                                </div>
                                <div class="col-md-12">
                                    <div class="form-group">
+                                   <label for="" > Enter Your Name </label>
+                                       <div class="aon-inputicon-box mt-3 mb-3">
+                                      
+                                           <input class="form-control sf-form-control" name="name" value="{{$editDoctor->name}}"  type="text" placeholder="Name">
+                                           <i class="aon-input-icon fa fa-eye"></i>
+                                       </div>
+                                       <label for="" > Your Phone </label>
+                                       <div class="aon-inputicon-box mt-3 mb-3">
                                        
-                                       <div class="aon-inputicon-box mt-3 mb-3">
-                                           <input class="form-control sf-form-control" name="name"  type="text" placeholder="Name">
-                                           <i class="fa-solid fa-person-simple"></i>
+                                           <input class="form-control sf-form-control" name="phone_number" 
+                                           value="{{$editDoctor->phone}}" type="number" >
+                                           <i class="aon-input-icon fa fa-eye"></i>
                                        </div>
+                                       <label for="" > Enter Your Email </label>
                                        <div class="aon-inputicon-box mt-3 mb-3">
-                                           <input class="form-control sf-form-control" name="phone_number" type="number" placeholder="Phone">
-                                           <i class="aon-input-icon fa fa-award"></i>
-                                       </div>
-                                       <div class="aon-inputicon-box mt-3 mb-3">
+                                      
                                          
-                                           <input class="form-control sf-form-control" type="email" name="email" id="" placeholder="Email">
+                                           <input class="form-control sf-form-control" type="email" value="{{$editDoctor->email}}" name="email" id="" placeholder="Email">
                                           
                                            <i class="aon-input-icon fa fa-eye"></i>
                                        </div>
@@ -129,8 +141,9 @@
                                            <i class="fa-solid fa-person-simple"></i>
                                         
                                        </div> -->
-
-                                       <select class="form-select form-select-sm form-control sf-form-control" name="specialist_id" aria-label=".form-select-sm example">
+                                       <label for="" > Specialist</label>
+                                       <div class="aon-inputicon-box mt-3 mb-3">
+                                       <select class="form-select form-select-sm form-control sf-form-control"value="{{$editDoctor ->specialist_id}}" name="specialist_id" aria-label=".form-select-sm example">
                                           <option selected>Select Specialist</option>
                                           @foreach($specialist as $data)
                     
@@ -138,31 +151,36 @@
                                           @endforeach
                                           
                                         </select>
-                                       <div class="aon-inputicon-box mt-3 mb-3">
-                                           <input class="form-control sf-form-control" name="address"  type="text" placeholder="Address ">
-                                           <i class="fa-solid fa-person-simple"></i>
+                                        <i class="aon-input-icon fa fa-eye"></i>
                                        </div>
+                                       <label for="" > Enter Your Address </label>
                                        <div class="aon-inputicon-box mt-3 mb-3">
-                                           <input class="form-control sf-form-control" name="education"  type="ecucation" placeholder="Education ">
-                                           <i class="fa-solid fa-person-simple"></i>
+                                           <input class="form-control sf-form-control" name="address" value="{{$editDoctor->address}}" type="text" placeholder="Address ">
+                                           <i class="aon-input-icon fa fa-eye"></i>
                                        </div>
+                                       <label for="" > Enter Your Education</label>
+                                       <div class="aon-inputicon-box mt-3 mb-3">
+                                           <input class="form-control sf-form-control" name="education" value="{{$editDoctor->education}}" type="ecucation" placeholder="Education ">
+                                           <i class="aon-input-icon fa fa-eye"></i>
+                                       </div>
+
                                        <label for="" >Date Of Birth</label>
                                        <div class="aon-inputicon-box mt-3 mb-3">
                                       
-                                           <input class="form-control sf-form-control" name="date_of_birth" type="date" placeholder="Date of Birth">
+                                           <input class="form-control sf-form-control" name="date_of_birth" value="{{$editDoctor->date_of_birth}}" type="date" placeholder="Date of Birth">
                                            <i class="aon-input-icon fa fa-eye"></i>
                                        </div>
                                        <label for="" >Consultant fee  </label>
                                        <div class="aon-inputicon-box mt-3 mb-3">
                                       
-                                           <input class="form-control sf-form-control" name="visit" type="text" placeholder="Enter Consultant Fee ">
+                                           <input class="form-control sf-form-control" name="visit" value="{{$editDoctor->price}}" type="text" placeholder="Enter Consultant Fee ">
                                            <i class="aon-input-icon fa fa-eye"></i>
                                        </div>
                                        <label for="" > Doctor details </label>
                                        <div class="aon-inputicon-box mt-3 mb-3">
                                       
                                            
-                                           <textarea class="form-control" name="description" placeholder="Doctor details" type="text" rows="3"></textarea>
+                                           <textarea class="form-control" name="description" value="{{$editDoctor->description}}" placeholder="Doctor details" type="text" rows="3"></textarea>
                                            <i class="aon-input-icon fa fa-eye"></i>
                                        </div>
                                    </div>
@@ -179,7 +197,7 @@
                                </div>
                                <div class="col-md-12">
                                <button id="next1" type="submit" class="next site-button w-100 mb-3" name= 'submit' >
-                                 Add Doctor<i class="feather-arrow-right"></i> 
+                                 Update Doctor Info <i class="feather-arrow-right"></i> 
                                </button>
                            </div>
 

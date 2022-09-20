@@ -65,6 +65,7 @@ class Doctor_profileController extends Controller
       $doctor->email = $request['email'];
       $doctor->specialist_id = $request['specialist_id'];
       $doctor->address = $request['address'];
+      $doctor->description = $request['description'];
       $doctor->education = $request['education'];
       $doctor->date_of_birth = $request['date_of_birth'];
       
@@ -73,13 +74,72 @@ class Doctor_profileController extends Controller
       // $doctor->doc_imag = $request['filename'];
       $doctor['doc_image']= $img;
       $doctor->save();
-      return redirect()->back();
+      return redirect()->back()->with('status','Data insert Successfell');
       
 
     }
     public function all_doctor(){
-      $allDoctor = Doctor::all();
+      $allDoctor = Doctor::paginate(12);
       return view('dashboard/dashboard view/allDoctor',compact('allDoctor'));
+    }
+    public function editDoctor($id){
+      // return $id;
+      $specialist=Specialist::all();
+      $editDoctor= Doctor:: find($id);
+
+      // return $editDoctor;
+      return view ('dashboard/dashboard view/editDoctor',compact('editDoctor','specialist'));
+    }
+    public function updateDoctor(Request $request,$id){
+      // return $request->all()
+      // return $request->doc_image;
+      $updateDoctor= Doctor:: find($id);
+      // return $updateDoctor;
+      if($request->doc_image){
+        $file = $request->doc_image;
+        // return $file;
+        $filename = time().'.'.$file->getClientOriginalExtension();
+        $file-> move(public_path('backend/img/doctorImage'), $filename);
+        $img= 'backend/img/doctorImage/'.$filename;
+        // $file -> move($path,$filename);
+      }
+
+        $updateDoctor['name'] = $request->name;
+        $updateDoctor['phone'] = $request->phone_number;
+        $updateDoctor['email'] = $request -> email;
+        $updateDoctor['specialist_id']=$request ->specialist_id;
+        $updateDoctor['address']= $request -> address;
+        $updateDoctor['description'] = $request->description;
+        $updateDoctor['education'] = $request->education;
+        $updateDoctor['date_of_birth']= $request->date_of_birth ;
+        
+        $updateDoctor['price'] = $request->visit;
+        
+        // $doctor->doc_imag = $request['filename']
+        
+        $updateDoctor['doc_image']= $img;
+        $updateDoctor->save();
+      // if ($request->doc_image)
+      // {
+      //   $file = $request ->doc_image;
+      //   $filename = time().'.'.$file->getClientOriginalExtension();
+        
+      //   $file-> move(public_path('backend/img/doctorImage'), $filename);
+      //   $img = 'backend/img/doctorImage/'.$filename;
+      //   // $file -> move($path,$filename);
+      // }
+      
+      
+     
+      return redirect()->route('AllDoctor')->with('message',"Data updated successfully");
+      
+    }
+// Delete data 
+    public function delete_doctor($id){
+      $deleteData = Doctor :: find($id);
+      $deleteData->delete();
+      return redirect()->route('AllDoctor')->with('message',"Data Delete successfully");
+
     }
     public function bookingList(){
       $booking_list = Booking:: all();

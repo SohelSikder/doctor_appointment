@@ -59,7 +59,7 @@
           <div id="sidebar" class="sidebar sidebar-with-footer">
             <!-- Aplication Brand -->
             <div class="app-brand">
-              <a href="http://127.0.0.1:8000/">
+              <a href="{{url('/')}}">
                 <svg
                   class="brand-icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -348,13 +348,8 @@
         <footer class="footer mt-auto">
             <div class="copyright bg-white">
               <p>
-                &copy; <span id="copy-year">2019</span> Copyright Sleek Dashboard Bootstrap Template by
-                <a
-                  class="text-primary"
-                  href="http://www.iamabdus.com/"
-                  target="_blank"
-                  >Abdus</a
-                >.
+                &copy; <span id="copy-year">© 2022</span> Hello Doctor
+                
               </p>
             </div>
             <script>

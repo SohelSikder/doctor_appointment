@@ -78,8 +78,8 @@
                         <div class="logo-header">
                             <div class="logo-header-inner logo-header-one">
                                 <a href="{{route('home')}}">
-                                    <img class="logo-pic-one" src="{{asset('fontend/images/logo-light.png')}}" alt="">
-                                    <img class="logo-pic-two" src="{{asset('fontend/images/logo-dark.png')}}" alt="">
+                                    <img class="logo-pic-one" src="{{asset('fontend/images/HELLO DOCTOR.png')}}" alt="">
+                                    <img class="logo-pic-two" src="{{asset('fontend/images/HELLO DOCTOR DARK.png')}}" alt="">
                                 </a>
                             </div>
                         </div>  
@@ -103,7 +103,7 @@
                         <li class="has-child"><a href="{{route('doctors')}}">All Doctors</a></li>
                                                                                        
 
-                    <li class="has-child"><a href="{{route('about')}}">About us</a></li>
+                     <li class="has-child"><a href="{{route('about')}}">About us</a></li>
 
                               
 
@@ -112,21 +112,27 @@
                                 <li class="has-child"><a href="{{route('contact')}}">Contact</a>  </li> 
                             </ul>
                            
+                       
                         </div>
-                        
+                        <!--==========Scearch------------->
+                <form method="get" action="{{ route('search.result') }}" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper" style="border-left: 2px solid #336699;" autocomplete="off">
+                    @csrf
+                    
+                    <input type="text" class="form-control" name="search" id="search" placeholder="Search in..." required />
+                    <button class="btn btn-search" type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            <!-- Search B
+                     
                         <!-- Header Right Section-->
                         <div class="extra-nav header-2-nav">
                             <div class="extra-cell">
-
-                                <!--Sign up-->
-                               
-                                <!--Add Listing up-->
-                                <a href="reports.html" class="site-button aon-add-listing m-l20" >
+                                <!--Sign up-->                               
+                                <a href="{{url('/login')}}" class="site-button aon-add-listing m-l20" >
                                 <i class="fa fa-user-circle" aria-hidden="true"></i>login/register
-                                </a> </div>
-                                
-                            </div>                            
-                    
+                                </a> 
+                            </div>
+                        </div>                            
                     </div>    
                 
                 </div>

@@ -33,7 +33,7 @@
                                            <div class="aon-form-doc-info">
                                                <strong>{{$doctor->name}}</strong>
                                                <span>{{$doctor->id}}</span>
-                                           </div>                                         
+                                           </div>
                                            
                                        </div>
                                        <div class="aon-form-top-right">

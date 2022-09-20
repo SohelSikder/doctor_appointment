@@ -12,21 +12,50 @@ class HomeController extends Controller
 {
     public function home()
      {
-        $doctor= Doctor::limit(4)->get();
+       
+        $doctor= Doctor::limit(4)->orderBy('id','DESC')->get();
         $specialist= Specialist:: limit(10)->get();
         $posts= Post :: limit(3)->get();
 
-       return view('home', compact('doctor','specialist','posts'));
+       return view('home', compact('doctor','specialist','posts',));
    }
 //    public function doctorInHome($id){
 //     $doctor = Doctor :: findorFail($id);
 //     return view ('home', compact('doctor'));
 //   }
+
+
+// ////////////////search///////////////
+
+
+
+public function search_result(Request $request)
+{
+    $query = $request->search;
+    $doctors = Doctor::where('name', 'LIKE', '%'. $query. '%')->orWhere('email', 'LIKE', '%'. $query. '%')->get();
+    return view('search', compact('doctors'));
+
+}
+
+
+
+
+
+
+
+
+
+
     public function index()
     {
+
         $doctor = Doctor :: all();
         return view ('doctors',compact('doctor'));
     }  
+    public function allSpecialist(){
+        $allSpecialist = Specialist :: all();
+        return view ('allSpecialist',compact('allSpecialist'));
+    }
 
     public function specialistDoctor($id)
     {

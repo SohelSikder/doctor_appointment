@@ -32,6 +32,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/doctor_profile', [Doctor_profileController::class, 'index'])->name('Doctor_profile');
 Route::get('/doctor_profile/{id}', [Doctor_profileController::class, 'doctorProfile'])->name('Doctor_profile');
 Route::get('/specialist/{id}',[HomeController::class,'specialistDoctor'])->name('AllSpecialist');
+Route::get('/allSpecialist',[HomeController::class,'allSpecialist'])->name('All_Specialist');
 Route::post('/specialist/store',[HomeController::class,'storeSpecialist'])->name('store.specialist');
 
 Route::get('/specialist',[HomeController::class,'specialist'])->name('AddSpecialist');
@@ -41,10 +42,14 @@ Route::get('/booking_form/{id}',[HomeController::class,'booking'])->name('Bookin
 Route::post('/bookin_info',[Doctor_profileController::class,'booking'])->name('Booking_Form');
 Route::post('/doctor_deshboard',[Doctor_profileController::class,'doctor_deshboard'])->name('Doctor_deshboard');
 Route::get('/add_doctor',[Doctor_profileController::class,'add_doctor'])->name('AddDoctor');
+Route::get('/editDoctor/{id}',[Doctor_profileController::class,'editDoctor'])->name('editDoctor');
+Route::post('updateDoctor/{id}',[Doctor_profileController::class,'updateDoctor'])->name('updateDoctor');
 Route::post('/added_doctor',[Doctor_profileController::class,'added_doctor'])->name('AddedDoctor');
 Route::get('/all_doctor',[Doctor_profileController::class,'all_doctor'])->name('AllDoctor');
+Route::get('/delete/{id}',[Doctor_profileController::class,'delete_doctor'])->name('deleteDoctor');
 Route::get('/bookingList',[Doctor_profileController::class,'bookingList'])->name('BookingList');
 Route::get('/patientsList',[Doctor_profileController::class,'patientsList'])->name('patientsList');
+Route::get('/search-result', [HomeController::class, 'search_result'])->name('search.result');
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
 Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout'])->name('pay');

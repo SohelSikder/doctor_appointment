@@ -9,7 +9,7 @@
                         <div class="aon-pro-banner-content">
                                 <div class="sf-doc-pro-card-media">
                                 <div class="sf-doc-pr-media-inner">
-                                    <img src="{{asset('/fontend/images/pro-card.jpg')}}" alt="">
+                                    <img src="{{asset($doctor->doc_image)}}" alt="">
                                     
                                     <i class="fa fa-check"></i>
                                 </div>
@@ -57,9 +57,11 @@
                                                 <div class="sf-doc-info-wrap">
                                                     <h3>{{$doctor->name}}</h3>
                                                     <div class="sf-doct-info">{{$doctor->education}}</div>
+                                                    <div class="sf-doct-info">Consultancy fee :{{$doctor->price}}</div>
                                                 </div>
                                                 <div class="sf-doc-position">
                                                   <span>{{$doctor->specialist->name}}</span>
+                                                  
                                                 </div>
                                             </div>
 

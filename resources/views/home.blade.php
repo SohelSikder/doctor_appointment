@@ -82,10 +82,8 @@
                 </div>
             </section>
             <!-- Banner Section End -->  
-            
-            <!-- Search Bar Home Section -->
-       
-            <!-- Search Bar Home Section End--> 
+          
+          
     
             <!-- Team Section -->
             <section class="aon-med-team-area aon-med-team-area1 bg-light-gray">
@@ -107,7 +105,7 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="aon-med-team">
                                         <div class="aon-med-team-pic">
-                                            <a href="profile1.html"><img src="{{asset('/fontend/images/team-2/pic1.jpg')}}" alt="#"></a>
+                                            <a href="profile1.html"><img src="{{asset($data->doc_image)}}" alt="#"></a>
                                         </div>
                                         
                                         <div class="aon-med-team-info">
@@ -136,7 +134,8 @@
                             
                             </div>
                             <div class="aon-addmore-btn-section">
-                                <a href="{{route('doctors')}}"class="aon-addplus"><i class="feather-plus"></i></a>
+                               
+                                <a href="{{route('doctors')}}" type="button" class="btn btn-primary">View All Doctors</a>
                             </div>
                         </div>
                     </div>
@@ -175,7 +174,7 @@
                                            <div class="aon-med-serices-cat-info">
                                                
                                                
-                                               <h4><a href="{{url('/specialist',$data->id)}}">{{$data->name}}, {{$data->id}}</a></h4>
+                                               <h4><a href="{{url('/specialist',$data->id)}}">{{$data->name}}</a></h4>
                                                <p>24 listing</p>
                                            </div>
                                        </div>
@@ -187,7 +186,7 @@
                             </div>
                            
                             <div class="aon-addmore-btn-section">
-                                <a href="javascripr:;" class="aon-addplus"><i class="feather-plus"></i></a>
+                                <a href="{{route('All_Specialist')}}" class="aon-addplus"><i class="feather-plus"></i></a>
                             </div>
                         </div>
                         

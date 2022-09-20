@@ -74,11 +74,13 @@
             
             <h3>All Docter list </h3>
         </div>
-        <div class="aon-admin-heading-right">
-            <button class="admin-button add-team-btn"><i class="fa fa-plus"></i> Add A New Doctor</button>
-        </div>
+       
     </div>
-    
+    @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+    @endif 
     <div class="row">
     @foreach($allDoctor as $data)
   
@@ -91,27 +93,33 @@
                         <i class="fa fa-ellipsis-v"></i>
                     </button>
                     <ul class="dropdown-menu"  >
-                        <li><a class="dropdown-item" href="javascript:;"><i class="feather-edit"></i> Edit</a></li>
-                        <li><a class="dropdown-item" href="javascript:;"><i class="feather-trash"></i> Delete</a></li>
+                        <li><a class="dropdown-item" href="{{url('editDoctor/'.$data->id)}}"><i class="feather-edit"></i> Edit</a></li>
+                        <li><a class="dropdown-item" href="{{url('delete/'.$data->id)}}"></i> Delete</a></li>
                     </ul>
                 </div>
-                <div class="aon-team-pic"><img src="{{ asset('backend/img/doctorImage/' . $data->doc_image) }}" /></div>
+                <div class="aon-team-pic"><img src="{{ asset($data->doc_image) }}" /></div>
                 <h5 class="aon-team-name">{{$data->name}}</h5>
-                <p class="aon-team-name">{{$data->specialist->name}}</p>
+                <p class="aon-team-name">{{$data->specialist->name ?? "-"}}</p>
                 <!-- <div class="aon-team-postion">{{$data->specialist}}</div>  -->
              
             </div>
             
         </div>
-        @endforeach
+     @endforeach
+        
     </div>
 
-    <div class="site-pagination s-p-center">
+    <div class="paginate">
+    {!! $allDoctor->links() !!}
+   </div>
+    
+    <!-- <div class="site-pagination s-p-center">
       <ul class="pagination">
+      
         <li class="page-item disabled">
           <a class="page-link" href="#" tabindex="-1"><i class="fa fa-chevron-left"></i></a>
         </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#"></a></li>
         <li class="page-item active">
           <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
         </li>
@@ -121,9 +129,10 @@
         <li class="page-item"><a class="page-link" href="#">11</a></li>
         <li class="page-item">
           <a class="page-link" href="#"><i class="fa fa-chevron-right"></i></a>
+
         </li>
       </ul>
-    </div>
+    </div> -->
 </div>
 </div>
 
